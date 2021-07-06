@@ -1,0 +1,10 @@
+pipeline{
+    agent any {
+        stage(' build ') {
+            bat " docker image build -t test-hello ."
+        }
+        stage(' test') {
+           bat " docker container run --name con-hello test-hello"
+        }
+    }
+}
